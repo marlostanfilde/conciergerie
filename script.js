@@ -176,6 +176,34 @@ function handleClickableCards() {
   });
 }
 
+/* ===== AJOUT : cacher / afficher le header au scroll ===== */
+let lastScrollY = window.scrollY;
+
+function handleHeaderOnScroll() {
+  if (!header) return;
+
+  const currentScrollY = window.scrollY;
+
+  if (document.body.classList.contains('menu-open')) {
+    document.body.classList.remove('header-hidden');
+    lastScrollY = currentScrollY;
+    return;
+  }
+
+  if (currentScrollY <= 20) {
+    document.body.classList.remove('header-hidden');
+  } else if (currentScrollY > lastScrollY && currentScrollY > 120) {
+    document.body.classList.add('header-hidden');
+  } else if (currentScrollY < lastScrollY) {
+    document.body.classList.remove('header-hidden');
+  }
+
+  lastScrollY = currentScrollY;
+}
+
+window.addEventListener('scroll', handleHeaderOnScroll, { passive: true });
+/* ===== FIN AJOUT ===== */
+
 updateContacts();
 setMinDates();
 document.querySelectorAll('.booking-form').forEach(handleBookingForm);
