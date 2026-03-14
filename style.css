@@ -82,6 +82,27 @@ a, button { -webkit-tap-highlight-color: transparent; }
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 }
+
+/* AJOUT : animation du header au scroll */
+.topbar,
+.site-header {
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  will-change: transform, opacity;
+}
+
+body.header-hidden .topbar {
+  transform: translateX(-50%) translateY(-120%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.header-hidden .site-header {
+  transform: translateX(-50%) translateY(-140%);
+  opacity: 0;
+  pointer-events: none;
+}
+/* FIN AJOUT */
+
 .brand, .hero h1, .section-heading h2, .card-body h3, .cta-banner h2, .site-footer h2, .page-hero h1, .listing-content h2, .contact-panel h1, .contact-form-panel h2, .media-overlay strong, .about-panel h2, .detail-copy h1 {
   font-family: "Cormorant Garamond", serif;
 }
